@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-training-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: TRAINING
+            remarks: Training table
+            columns:
+              - column:
+                  name: TRAINING_ID
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: training_pk
+              - column:
+                  name: DURATION
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TRAINING_TYPE_ID
+                  type: integer
+                  constraints:
+                    foreignKeyName: TRAINING_TO_TRAINING_TYPE_FK
+                    references: TRAINING_TYPE(TRAINING_TYPE_ID)
+              - column:
+                  name: TRAINER_ID
+                  type: integer
+                  constraints:
+                    foreignKeyName: TRAINING_TO_TRAINER_FK
+                    references: TRAINER(TRAINER_ID)
+              - column:
+                  name: MAX_POKEMONS_NUMBER
+                  type: integer

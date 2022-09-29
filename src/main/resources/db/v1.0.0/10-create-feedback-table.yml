@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-feedback-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: FEEDBACK
+            remarks: feedback table
+            columns:
+              - column:
+                  name: CREATOR_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: FEEDBACK_TO_CREATOR_FK
+                    references: TRAINER(TRAINER_ID)
+              - column:
+                  name: TRAINER_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: FEEDBACK_TO_TRAINER_FK
+                    references: USER(USER_ID)
+              - column:
+                  name: TEXT
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: GRADE
+                  type: integer
+                  constraints:
+                    nullable: false
+                    checkConstraint: GRADE >= 0 AND GRADE <= 10
+        - addPrimaryKey:
+            columnNames: CREATOR_ID, TRAINER_ID
+            constraintName: FEEDBACK_PK
+            schemaName: public
+            tableName: FEEDBACK
+            validate: true

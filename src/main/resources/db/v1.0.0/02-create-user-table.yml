@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-user-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: USER
+            remarks: Users table with link to credentials
+            columns:
+              - column:
+                  name: USER_ID
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pk
+                    foreignKeyName: USER_TO_CREDENTIALS_FK
+                    references: CREDENTIALS(USER_ID)
+              - column:
+                  name: NAME
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: SURNAME
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DATE_OF_BIRTH
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PHONE_NUMBER
+                  type: varchar(22)
+                  constraints:
+                    nullable: false

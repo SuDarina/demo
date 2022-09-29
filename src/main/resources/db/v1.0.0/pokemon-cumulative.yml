@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: 01-create-credentials-table.yml
+  - include:
+      relativeToChangelogFile: true
+      file: 02-create-user-table.yml
+
+
+
+

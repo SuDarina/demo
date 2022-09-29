@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-lesson-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: LESSON
+            remarks: Lesson table
+            columns:
+              - column:
+                  name: LESSON_ID
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: lesson_pk
+              - column:
+                  name: TIME
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DAYS
+                  type: varchar[]
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TRAINING_ID
+                  type: integer
+                  constraints:
+                    foreignKeyName: LESSON_TO_TRAINING_FK
+                    references: TRAINING(TRAINING_ID)
+                    nullable: false

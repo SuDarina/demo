@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-initial-tag
+      author: sudarina
+      changes:
+        - tagDatabase:
+            tag: version_0.0.0
+  - include:
+      relativeToChangeLog: true
+      file: classpath:db/v1.0.0/pokemon-cumulative.yml

@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-trainer-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: TRAINER
+            remarks: Trainer table
+            columns:
+              - column:
+                  name: TRAINER_ID
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: trainer_pk
+                    foreignKeyName: TRAINER_TO_USER_FK
+                    references: USER(USER_ID)
+              - column:
+                  name: RATING
+                  type: integer
+                  constraints:
+                    checkConstraint: RATING >= 0 AND RATING <= 10
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: varchar

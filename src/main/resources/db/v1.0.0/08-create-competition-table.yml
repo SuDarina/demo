@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-competition-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: COMPETITION
+            remarks: Competition table
+            columns:
+              - column:
+                  name: COMPETITION_ID
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: competition_pk
+              - column:
+                  name: NAME
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DATE
+                  type: date
+                  constraints:
+                    nullable: false

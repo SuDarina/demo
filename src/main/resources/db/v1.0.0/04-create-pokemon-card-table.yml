@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-pokemon-card-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: POKEMON_CARD
+            remarks: Pokemon card table
+            columns:
+              - column:
+                  name: POKEMON_CARD_ID
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pokemon_card_pk
+                    foreignKeyName: POKEMON_CARD_TO_POKEMON_FK
+                    references: POKEMON(POKEMON_ID)
+              - column:
+                  name: WEIGHT
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: RANG
+                  type: integer
+                  constraints:
+                    nullable: false

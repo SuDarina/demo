@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-pokemon-lesson-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: POKEMON_LESSON
+            remarks: Lesson and pokemon binding table
+            columns:
+              - column:
+                  name: POKEMON_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: POKEMON_LESSON_TO_POKEMON_FK
+                    references: POKEMON(POKEMON_ID)
+              - column:
+                  name: LESSON_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: POKEMON_TO_LESSON_FK
+                    references: LESSON(LESSON_ID)
+        - addPrimaryKey:
+            columnNames: POKEMON_ID, LESSON_ID
+            constraintName: POKEMON_LESSON_PK
+            schemaName: public
+            tableName: POKEMON_LESSON
+            validate: true

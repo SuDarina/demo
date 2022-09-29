@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-pokemon-competition-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: POKEMON_COMPETITION
+            remarks: Competition and pokemon binding table
+            columns:
+              - column:
+                  name: POKEMON_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: POKEMON_LESSON_TO_POKEMON_FK
+                    references: POKEMON(POKEMON_ID)
+              - column:
+                  name: COMPETITION_ID
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: POKEMON_TO_COMPETITION_FK
+                    references: LESSON(LESSON_ID)
+        - addPrimaryKey:
+            columnNames: POKEMON_ID, COMPETITION_ID
+            constraintName: POKEMON_COMPETITION_PK
+            schemaName: public
+            tableName: POKEMON_COMPETITION
+            validate: true

@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-training-type-1
+      author: sudarina
+      changes:
+        - createTable:
+            tableName: TRAINING_TYPE
+            remarks: Training type table
+            columns:
+              - column:
+                  name: TRAINING_TYPE_ID
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: training_type_pk
+              - column:
+                  name: NAME
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
